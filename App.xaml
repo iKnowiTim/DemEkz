@@ -1,0 +1,15 @@
+﻿<Application x:Class="DemExam.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DemExam"
+             xmlns:vm="clr-namespace:DemExam.ViewModels"
+             xmlns:view="clr-namespace:DemExam.Views"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:MainPageViewModel}">
+                <view:MainPage/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
