@@ -185,16 +185,6 @@ namespace DemExam.ViewModels
             }
         }
 
-        //public void CheckSize()
-        //{
-        //    if (GenderFilter == 1)
-        //    {
-        //        var a = (from f in db.Client_Import_good.Count()
-        //                 )
-        //        size = db.Client_Import_good.Count();
-        //    }
-        //}
-
 
         private int count = 0;
         public int Count
