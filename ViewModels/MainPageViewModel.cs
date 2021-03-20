@@ -143,6 +143,8 @@ namespace DemExam.ViewModels
                            join l in db.Tags
                              on f.TagID equals l.ID
                              into m
+                           join gen in db.Genders
+                           on f.Gender equals gen.Code
                            from mo in m.DefaultIfEmpty()
                            orderby f.ID
                            select new
@@ -151,14 +153,14 @@ namespace DemExam.ViewModels
                                ID = f.ID,
                                Surname = f.Surname,
                                DateOfBirth = f.DateOfBirth,
-                               Gender = f.Gender,
+                               Gender = gen.Name,
                                Email = f.Email,
                                Phone = f.Phone,
                                LastName = f.LastName,
                                Tags = mo.Title,
                                RegistrationDate = f.RegistrationDate
                            }
-                           ).Where(a => GenderFilter > 0 ? (a.Gender == "м" && GenderFilter == 1) || (a.Gender == "ж" && GenderFilter == 2) : true                            
+                           ).Where(a => GenderFilter > 0 ? (a.Gender == "Мужской" && GenderFilter == 1) || (a.Gender == "Женский" && GenderFilter == 2) : true                            
                            ).Skip(count * PerPage).Take(PerPage).ToList();
             size = db.Client_Import_good.Count();
         }        
@@ -220,6 +222,18 @@ namespace DemExam.ViewModels
                 OnPropertyChanged(nameof(Name));
             }
         }
+
+        private string searchName;
+        public string SearchName
+        {
+            get { return searchName; }
+            set 
+            {
+                searchName = value;
+                OnPropertyChanged(nameof(SearchName));
+            }
+        }
+
 
         private int id;
         public int ID
